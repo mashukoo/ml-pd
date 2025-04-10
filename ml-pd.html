@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<title>Kvadrats Canvas</title>
+</head>
+<body>
+<h1>Parvaldi kvadratu</h1>
+<p>Uzspied pogas uz klaviaturas, O, B vai G lai mainīt krāsas.</p>
+<a href="https://www.imdb.com/title/tt3805976/">Saite uz filmu</a>
+<br><br>
+<img src="https://volshebnaya-eda.ru/wp-content/uploads/2012/12/korabliki-12.jpg" alt="Food"
+width="460" height="345">
+<ul>
+<li>Banani</li>
+<li>Aboli</li>
+<li>Bumbieri</li>
+</ul>
+    <canvas id="canv" width="300" height="300"></canvas>
+    <script>
+        const canv = document.getElementById('canv');
+        const ctx = canv.getContext('2d');
+        let x = 0;
+        let y = 0;
+        let color = 'black';
+
+        function draw() {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, 300, 300);
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, 30, 30);
+        }
+        function move(event) {
+            if (event.key === 'ArrowRight') {
+                x = x + 10;
+            }
+            if (event.key === 'ArrowLeft') {
+                x = x - 10;
+            }
+            if (event.key === 'ArrowUp') {
+                y = y - 10;
+            }
+            if (event.key === 'ArrowDown') {
+                y = y + 10;
+            }
+
+            if (event.key === "g" || event.key === "G") {
+            color = "green"; }
+            if (event.key === "b" || event.key === "B") {
+                color = "black"; }
+            if (event.key === "o" || event.key === "O") {
+                color = "orange"; }
+     draw();
+   };
+   draw();
+          
+        addEventListener('keydown', move);
+        setInterval(draw, 10);
+    </script>
+</body>
+</html>
